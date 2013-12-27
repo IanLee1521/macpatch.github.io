@@ -26,6 +26,7 @@
 
 .underline-off {
   text-decoration: none !important;
+  a:hover {color:white;}
 }
 
 /* Colored background block */
