@@ -16,12 +16,16 @@
   text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
 }
 
-.jumbotron h1, h5 {
+.jumbotron h1 {
   color: white;
   font-size: 70px;
   font-weight: 300;
   /*line-height: 90px;*/
   /*letter-spacing: 3px;*/
+}
+
+.jumbotron h5 {
+  color: white !important;
 }
 
 .underline-off {
