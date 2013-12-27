@@ -4,28 +4,29 @@
   background: linear-gradient(#34495e, #387d98);      /* Dark to med light */ 
   /*background: linear-gradient(#34495e, #1e76b7);*/  /* Dark to light */
   background-size: cover;
-  color: #ffffff;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
-  text-align: center;
+  /*color: #ffffff;*/
+  /*text-shadow: 2px 2px 3px rgba(0,0,0,0.3);*/
+  /*text-align: center;*/
   padding-bottom: 0;
   margin-bottom:0;
 }
+
+.jumbotron .head {
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  /*text-shadow: 2px 2px 3px rgba(0,0,0,0.3);*/
 }
 
 .jumbotron h1 {
-  color: white;
+/*  color: white;*/
   font-size: 70px;
   font-weight: 300;
-  /*line-height: 90px;*/
-  /*letter-spacing: 3px;*/
-}
-
-.jumbotron h5 {
-  color: white !important;
 }
 
 .underline-off {
