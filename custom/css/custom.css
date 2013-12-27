@@ -24,6 +24,10 @@
   /*letter-spacing: 3px;*/
 }
 
+.underline-off {
+  text-decoration: none;
+}
+
 /* Colored background block */
 .full-block {
   background-color: #f6f6f6; /*#efefef;*/
