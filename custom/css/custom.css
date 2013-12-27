@@ -26,11 +26,10 @@
 
 .underline-off {
   text-decoration: none !important;
-  a:hover {color:white;}
 }
 
 .underline-off .a:hover {
-  color:white;
+  color:white !important;
 }
 
 /* Colored background block */
