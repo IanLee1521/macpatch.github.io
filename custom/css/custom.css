@@ -29,6 +29,10 @@
   a:hover {color:white;}
 }
 
+.underline-off .a:hover {
+  color:white;
+}
+
 /* Colored background block */
 .full-block {
   background-color: #f6f6f6; /*#efefef;*/
