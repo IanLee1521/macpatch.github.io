@@ -9,27 +9,37 @@ base_url: "./"
   <div class='span2 sidebar'>
     <h3>Left Sidebar</h3>
     <ul class="nav nav-tabs nav-stacked">
-      <li><a href='#'>Another Link 1</a></li>
-      <li><a href='#'>Another Link 2</a></li>
-      <li><a href='#'>Another Link 3</a></li>
+      <li><a href='#overview'>Overview</a></li>
+      <li><a href='#sysdiagram'>System diagram</a></li>
+      <li><a href='#vid'>Vid</a></li>
     </ul>
   </div>
   <div class='span10 main'>
     <div class="panel panel-default">
-      <div class="panel-heading">
+      <div class="panel-heading" id="overview">
         <h3 class="panel-title">MacPro</h3>
       </div>
       <div class="panel-body">
         <p>This video is hosted on YouTube</p>
         <iframe width="640" height="360" src="https://www.youtube.com/embed/SQl2FjaKCAQ?modestbranding=1&autohide=1" frameborder="0" allowfullscreen></iframe>
       </div>
+
+      <div class="panel-heading" id="sysdiagram">
+        <h3 class="panel-title">System diagram</h3>
+      </div>
+      <div class="panel-body">
+        <img src="{{ page.base_url }}images/macpatch_env.png" alt="..." class="img-thumbnail">
+      </div>
+
+      <div class="panel-heading" id="vid">
+        <h3 class="panel-title">Github vid</h3>
+      </div>
+      <div class="panel-body">
+        <p>This video is hosted on github</p>
+        <video id="sfcatalog" class="video-js vjs-default-skin vjs-big-play-centered" data-setup='{"controls": true, "preload": "auto", "width": "640", "height": "364"}'>
+         <source src="{{ page.base_url }}vids/sfcatalog.mp4" type='video/mp4' />
+        </video>
+      </div>
     </div>
-
-    <img src="{{ page.base_url }}images/macpatch_env.png" alt="..." class="img-thumbnail">
-
-    <p>This video is hosted on github</p>
-    <video id="sfcatalog" class="video-js vjs-default-skin vjs-big-play-centered" data-setup='{"controls": true, "preload": "auto", "width": "640", "height": "364"}'>
-     <source src="{{ page.base_url }}vids/sfcatalog.mp4" type='video/mp4' />
-    </video>
   </div>
 </div> <!-- /container -->
