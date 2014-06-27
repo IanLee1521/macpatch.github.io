@@ -11,12 +11,35 @@ base_url: "./"
     <div class="row">
       <div class="col-xs-2 col-xs-offset-1">
         <ul class="nav nav-sidebar">
+          <li><a href="#requirements">System requirements</a></li>
           <li><a href="#sysdiagram">System diagram</a></li>
-          <li><a href="#vid">Video</a></li>
+          <li><a href="#demo-vid">Demo video</a></li>
         </ul>
       </div>
       <div class="col-xs-9">
         <div class="panel panel-default">
+          <div class="panel-heading" id="requirements">
+            <h3 class="panel-title">System Requirements</h3>
+          </div>
+          <div class="panel-body">
+            <p class="lead">Client</p>
+            <ul>
+              <li>Mac OS X Intel 32bit or 64bit.</li>
+              <li>Mac OS X 10.7.5 or higher.</li>
+            </ul>
+            <p class="lead">Server</p>
+            <ul>
+              <li>Mac OS X or Mac OS X Server 10.7 or higher.</li>
+              <li>Intel, PPC is not supported.</li>
+              <li>4GB of RAM, 8GB is recommended.</li>
+              <li>Java 1.6 or higher.</li>
+              <li>MySQL version 5.1 or higher. MySQL 5.5 or 5.6 is recommended.</li>
+              <li>Xcode 4.3 or higher.</li>
+            </ul>
+            <p><em>Java 7 Issue</em></p>
+            <p>If your using Java 1.7, Oracle did not include the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7". Apparently they are needed for any stronger keys then 128-bit keys. You can get the Unlimited Strength bundles from the Oracle site, <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a> Installing it is as "simple" as dumping them to the "/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/jre/lib/security/" directory.</p>
+          </div>
+
           <div class="panel-heading" id="sysdiagram">
             <h3 class="panel-title">System diagram</h3>
           </div>
@@ -24,8 +47,8 @@ base_url: "./"
             <img src="{{ page.base_url }}images/macpatch_env.png" alt="..." class="img-thumbnail">
           </div>
 
-          <div class="panel-heading" id="vid">
-            <h3 class="panel-title">Github vid</h3>
+          <div class="panel-heading" id="demo-vid">
+            <h3 class="panel-title">Demo video</h3>
           </div>
           <div class="panel-body">
             <p>This video is hosted on github</p>
