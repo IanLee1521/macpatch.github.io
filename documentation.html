@@ -1,18 +1,111 @@
 ---
-layout: default
 title: Docs
+layout: default
 slug: documentation
 base_url: "./"
 ---
 
-<div class="container" id="content">
-	<br><br>
+<div class="container-fluid" id="content">
+  <br><br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-1">
+        <ul class="nav nav-sidebar">
+          <li><a href="#requirements">System requirements</a></li>
+          <li><a href="#tuning">System tuning</a></li>
+          <li><a href="#database">Database</a></li>
+          <li><a href="#build-server">Building the MacPatch Server</a></li>
+          <li><a href="#config">Server configuration</a></li>
+          <li><a href="#build-client">Building client software</a></li>
+          <li><a href="#web-admin">Web Admin setup</a></li>
+          <li><a href="#backup">Backup</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-7">
+        <h2>MacPatch v2.5.0 Install and Setup Guide</h2>
 
-	<div class="alert alert-info text-center">
-		<p>Coming soon.</p> 
-		<p><a class="btn btn-link underline-off" href="https://twitter.com/intent/user?screen_name=macpatchsw" onclick="return popitup('https://twitter.com/intent/user?screen_name=macpatchsw')"><i class="fa fa-twitter"></i> Follow us on Twitter</a></p>
-		<p>We'll let you know when this page is ready.</p>
-	</div>
+        <div class="panel panel-default">
+          <div class="panel-heading" id="requirements">
+            <h2 class="panel-title">System Requirements</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <p class="lead">Client</p>
+            <ul>
+              <li>Mac OS X Intel 32bit or 64bit.</li>
+              <li>Mac OS X 10.7.0 or higher.</li>
+            </ul>
+            
+            <p class="lead">Server</p>
+            <ul>
+              <li>Mac OS X 10.7 or higher.</li>
+              <li>Linux Fedora & Ubuntu</li>
+              <li>4GB of RAM, 8GB is recommended.</li>
+              <li>120GB of free disk space</li>
+              <li>Java 1.6 or higher.</li>
+              <li>MySQL version 5.1 or higher. MySQL 5.6 is recommended.</li>
+            </ul>
 
-	<br><br><br><br><br>
+            <p><h5><em>Java 7 Issue</em></h5></p>
+            <p>If your using Java 1.7, Oracle did not include the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7". Apparently they are needed for any stronger keys then 128-bit keys. You can get the Unlimited Strength bundles from the Oracle site, <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a> Installing it is as "simple" as dumping them to the "/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/jre/lib/security/" directory.</p>
+
+            <p class="lead">Ports (TCP) used by server</p>
+            <h5>Default</h5>
+            <ul>
+              <li>80, 443, 2600, 3601, 4601</li>
+            </ul>
+            <h5>Configurable</h5>
+            <ul>
+              <li>2600, 3601, 4601</li>
+            </ul>
+          </div>
+
+          <div class="panel-heading" id="tuning">
+            <h2 class="panel-title">System Tuning</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <p>In order to get the most out of Mac OS X Client/Server operating system some of it’s default limits need to be increased. Please run the following commands via Terminal application. Note, a reboot is recommended after applying these changes.</p>
+            <p>Note, these adjusted settings are for a system with 4GB of RAM.</p>
+            <pre># echo 'kern.maxfiles=20480' | sudo tee -a /etc/sysctl.conf
+# echo -e 'limit maxfiles 8192 20480\nlimit maxproc 1000 2500' | sudo tee -a /etc/launchd.conf
+# echo 'ulimit -n 4096' | sudo tee -a /etc/profile
+</pre>
+            <p>Suggested Links:</p>
+            <ul>
+              <li><a href="http://support.apple.com/kb/HT4022">http://support.apple.com/kb/HT4022</a></li>
+              <li><a href="http://support.apple.com/kb/HT3854">http://support.apple.com/kb/HT3854</a></li>
+            </ul>
+          </div>
+
+          <div class="panel-heading" id="sysdiagram">
+            <h2 class="panel-title">System diagram</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <img src="{{ page.base_url }}images/macpatch_env.png" alt="..." class="img-responsive">
+            <small><a href="{{ page.base_url }}images/macpatch_env.png" target="_blank">View full size</a></small>
+          </div>
+
+          <div class="panel-heading" id="screenshots">
+            <h2 class="panel-title">Screen shots</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <p>Screen shots</p>
+            
+          </div>
+
+          <div class="panel-heading" id="license">
+            <h2 class="panel-title">License</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <p>MacPatch is available under the GNU GPLv2 license. See the <a href="https://github.com/SMSG-MAC-DEV/MacPatch/blob/master/LICENSE">LICENSE</a> file for more info.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div> <!-- /container -->
