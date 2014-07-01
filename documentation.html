@@ -118,9 +118,9 @@ mysql> quit
             <p>Note, Xcode needs to be installed and the command line tools need to be installed as well. Xcode is a free download via the "App Store.app".</p>
             <p>Install Steps via command line:</p>
             <pre>mkdir -p /Library/MacPatch/tmp
-              cd /Library/MacPatch/tmp
-              git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
-              /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
+cd /Library/MacPatch/tmp
+git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
+/Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
 </pre>            
           </div>
 
@@ -159,7 +159,8 @@ If you choose to run your own Apple SoftwareUpdate server it is recommended to i
                 
                 <p>Open a new Terminal window and run the following command</p>
                 <pre># /Library/MacPatch/Server/conf/scripts/addRemoteCert.sh –c \
-                  "server.name.com 3269/636"</pre>
+"server.name.com 3269/636"
+</pre>
 
                 <p>Now close the window and continue with starting the MacPatch server services.</p>
               </li>
@@ -192,13 +193,15 @@ If you choose to run your own Apple SoftwareUpdate server it is recommended to i
             <p>Apple patch content will download eventually on it's cycle but for the first time it's recommended to download it manually.</p>
             <p>Run the following command via the Terminal.app</p>
             <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPPatchLoader -c \
-              /Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist</pre>
+/Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
+</pre>
             
             <h5>Symantec AntiVirus defs</h5>
             <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
             <p>Run the following command via the Terminal.app</p>
             <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPSAVDownloader -p \
-              /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plis</pre>
+/Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plis
+</pre>
           </div>
 
           <div class="panel-heading" id="build-client">
