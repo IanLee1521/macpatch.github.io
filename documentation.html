@@ -78,13 +78,34 @@ base_url: "./"
             </ul>
           </div>
 
-          <div class="panel-heading" id="sysdiagram">
-            <h2 class="panel-title">System diagram</h2>
+          <div class="panel-heading" id="database">
+            <h2 class="panel-title">Database</h2>
           </div>
           <div class="panel-body">
             <small><a class="pull-right" href="#content">go to top</a></small>
-            <img src="{{ page.base_url }}images/macpatch_env.png" alt="..." class="img-responsive">
-            <small><a href="{{ page.base_url }}images/macpatch_env.png" target="_blank">View full size</a></small>
+            <p>The MacPatch environment requires a MySQL database to function. It is recommended that you install the database software prior to installing the MacPatch server software. It is recommended that MySQL version 5.5.x or 5.6.x Enterprise edition be used, but the community edition will also work. It is also recommended that the MySQL server be dedicated to the MacPatch server(s).</p>
+            <p>A MySQL configuration file (my.cnf) has been included with the MacPatch source as a starting baseline. Please note, the configuration file is for a MacPatch server containing the MacPatch database with 4Gig's of RAM.</p>
+            <p>Login as <strong>root</strong></p>
+            <pre>mysql -u root -p</pre>
+            <p>Run the following MySQL commands</p>
+            <pre>mysql> CREATE DATABASE MacPatchDB;
+mysql> CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
+mysql> CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
+mysql> SET GLOBAL log_bin_trust_function_creators = 1;
+mysql> FLUSH PRIVILEGES;
+</pre>
+            <p>Delete MySQL anonymous accounts</p>
+            <pre>mysql> DROP USER ''@'localhost';
+mysql> DROP USER ''@'host_name';
+mysql> quit
+</pre>
+            <p>Load database schema</p>
+            <pre>% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_tables.sql
+% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_views.sql
+</pre>
           </div>
 
           <div class="panel-heading" id="screenshots">
