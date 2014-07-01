@@ -17,7 +17,7 @@ base_url: "./"
           <li><a href="#build-server">Building the MacPatch Server</a></li>
           <li><a href="#asus">Apple Software Update Server</a></li>
           <li><a href="#server-config">Server configuration</a></li>
-          <li><a href="#build-client">Building client software</a></li>
+          <li><a href="#build-client">Building the MacPatch client software</a></li>
           <li><a href="#web-admin">Web Admin setup</a></li>
           <li><a href="#backup">Backup</a></li>
         </ul>
@@ -140,13 +140,14 @@ If you choose to run your own Apple SoftwareUpdate server it is recommended to i
             <small><a class="pull-right" href="#content">go to top</a></small>
             <p>The master MacPatch server requires that several components be setup and configured for the environment to work properly.</p>
 
-            <p class="lead">Java check</p>
+            <h5>Java check</h5>
             <p>Before any of the services are configured and launched now is the right time to make sure JAVA is installed. The best way to do this is to run " java -version" from the Terminal.app. If it's not installed the OS will prompt you to install it.</p>
 
             <p class="lead">Server configuration steps</p>
             <p>Run the following shell scripts in order to configure</p>
             <ol>
-              <li><p>DataBaseLDAPSetup.sh (Master)</p>
+              <li>
+                <p>DataBaseLDAPSetup.sh (Master)</p>
                 <ol>
                   <li>The database setup is required for MacPatch to function.</li>
                   <li>The LDAP/AD External Web Admin Authentication is optional, see note below about certificates.</li>
@@ -161,24 +162,62 @@ If you choose to run your own Apple SoftwareUpdate server it is recommended to i
 
                 <p>Now close the window and continue with starting the MacPatch server services.</p>
               </li>
-              <li>WebAdminSetup.sh (Master)</li>
-              <li>WebServicesSetup.sh (Master)</li>
-              <li>PatchLoaderSetup.sh</li>
-              <li>SymantecAntivirusSetup.sh (Optional)</li>
-              <li>StartServices.sh</li>
+              <li>
+                <p>WebAdminSetup.sh (Master)</p>
+                <p>The MacPatch admin web console is required to use MacPatch. This section is an option for those who wish to setup additional servers for large environments.</p>
+              </li>
+
+              <li>
+                <p>WebServicesSetup.sh (Master)</p>
+                <p>The MacPatch web services are required to use MacPatch.<br>Note: The TCP port used in this config is used for NON-SSL traffic.</p>
+              </li>
+              <li>
+                <p>PatchLoaderSetup.sh</p>
+                <p>MacPatch requires gathering all of Apple Software updates from an Apple Software Update server. So that Apple patches can be assigned to a patch group for patching.</p>
+              </li>
+              <li>
+                <p>SymantecAntivirusSetup.sh (Optional)</p>
+                <p>MacPatch supports patching Symantec Antivirus definitions. Not all sites use SAV/SEP so this step is optional.</p>
+              </li>
+              <li>
+                <p>StartServices.sh</p>
+                <p>Depending on your choices this script will start all MacPatch services.</p>
+              </li>
             </ol>
+
+            <p class="lead">Download content</p>
+
+            <h5>Apple content</h5>
+            <p>Apple patch content will download eventually on it's cycle but for the first time it's recommended to download it manually.</p>
+            <p>Run the following command via the Terminal.app</p>
+            <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPPatchLoader -c \
+/Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist</pre>
+            
+            <h5>Symantec AntiVirus defs</h5>
+            <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
+            <p>Run the following command via the Terminal.app</p>
+            <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPSAVDownloader -p \
+/Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plis</pre>
           </div>
 
-          <div class="panel-heading" id="aID">
-            <h2 class="panel-title">Title</h2>
+          <div class="panel-heading" id="build-client">
+            <h2 class="panel-title">Building the MacPatch Client Software</h2>
           </div>
           <div class="panel-body">
             <small><a class="pull-right" href="#content">go to top</a></small>
             <p>Content</p>
           </div>
 
-          <div class="panel-heading" id="aID">
-            <h2 class="panel-title">Title</h2>
+          <div class="panel-heading" id="web-admin">
+            <h2 class="panel-title">Web Admin setup</h2>
+          </div>
+          <div class="panel-body">
+            <small><a class="pull-right" href="#content">go to top</a></small>
+            <p>Content</p>
+          </div>
+
+          <div class="panel-heading" id="backup">
+            <h2 class="panel-title">Backup</h2>
           </div>
           <div class="panel-body">
             <small><a class="pull-right" href="#content">go to top</a></small>
