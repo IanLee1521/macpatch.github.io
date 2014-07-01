@@ -14,7 +14,7 @@ base_url: "./"
           <li><a href="#requirements">System requirements</a></li>
           <li><a href="#install">Install</a></li>
           <li><a href="#sysdiagram">System diagram</a></li>
-          <li><a href="#demo-vid">Demo video</a></li>
+          <li><a href="#screenshots">Screen shots</a></li>
           <li><a href="#license">License</a></li>
         </ul>
       </div>
@@ -25,26 +25,26 @@ base_url: "./"
           </div>
           <div class="panel-body">
             <small><a class="pull-right" href="#content">go to top</a></small>
-            <p class="lead">Client:</p>
+            <p class="lead">Client</p>
             <ul>
               <li>Mac OS X Intel 32bit or 64bit.</li>
-              <li>Mac OS X 10.7.5 or higher.</li>
+              <li>Mac OS X 10.7.0 or higher.</li>
             </ul>
             
-            <p class="lead">Server:</p>
+            <p class="lead">Server</p>
             <ul>
               <li>Mac OS X 10.7 or higher.</li>
-              <li>Linuz (RHEL & Ubuntu)</li>
-              <li>8GB RAM.</li>
+              <li>Linux Fedora & Ubuntu</li>
+              <li>4GB of RAM, 8GB is recommended.</li>
               <li>120GB of free disk space</li>
               <li>Java 1.6 or higher.</li>
-              <li>MySQL version 5.1 or higher. MySQL 5.5 or 5.6 is recommended.</li>
+              <li>MySQL version 5.1 or higher. MySQL 5.6 is recommended.</li>
             </ul>
 
             <p><h5><em>Java 7 Issue</em></h5></p>
             <p>If your using Java 1.7, Oracle did not include the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7". Apparently they are needed for any stronger keys then 128-bit keys. You can get the Unlimited Strength bundles from the Oracle site, <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a> Installing it is as "simple" as dumping them to the "/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/jre/lib/security/" directory.</p>
 
-            <p class="lead">Ports (TCP) used by server:</p>
+            <p class="lead">Ports (TCP) used by server</p>
             <h5>Default</h5>
             <ul>
               <li>80, 443, 2600, 3601, 4601</li>
@@ -75,15 +75,13 @@ git clone https://github.com/SMSG-MAC-DEV/MacPatch.git</pre>
             <small><a href="{{ page.base_url }}images/macpatch_env.png" target="_blank">View full size</a></small>
           </div>
 
-          <div class="panel-heading" id="demo-vid">
-            <h2 class="panel-title">Demo video</h2>
+          <div class="panel-heading" id="screenshots">
+            <h2 class="panel-title">Screen shots</h2>
           </div>
           <div class="panel-body">
             <small><a class="pull-right" href="#content">go to top</a></small>
             <p>This video is hosted on github</p>
-            <video id="sfcatalog" class="video-js vjs-default-skin vjs-big-play-centered" data-setup='{"controls": true, "preload": "auto", "width": "640", "height": "364"}'>
-             <source src="{{ page.base_url }}vids/sfcatalog.mp4" type='video/mp4' />
-            </video>
+            
           </div>
 
           <div class="panel-heading" id="license">
