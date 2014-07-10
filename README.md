@@ -1,2 +1,2 @@
-MacPatch.github.com
+MacPatch.github.io
 ===================
