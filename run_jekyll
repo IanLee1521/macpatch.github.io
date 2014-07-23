@@ -1,0 +1,6 @@
+#!/bin/bash
+# run local Jekyll
+bundle exec jekyll serve
+
+# update Jekyll
+# bundle update
