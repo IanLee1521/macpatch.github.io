@@ -2,9 +2,23 @@
 layout: documentation
 title: Quick Start - Linux
 slug: documentation
+side_nav: quickstart-linux
 base_url: "/"
 ---
 
+<style>
+table {
+    margin: 10px 0 15px 0;
+    border-collapse: collapse;
+}
+td,th { 
+    border: 1px solid #ddd;
+    padding: 3px 10px;
+}
+th {
+    padding: 5px 10px;  
+}
+</style>
 
 <div class="container" id="content">
     <h1>MacPatch - Quick Start Guide for Linux</h1>
@@ -23,39 +37,39 @@ base_url: "/"
 
     <h5>APT</h5>
 
-    <pre><code>sudo apt-get update
-    sudo apt-get install git
-    sudo apt-get install build-essential
-    sudo apt-get install openjdk-7-jdk
-    sudo apt-get install zip
-    sudo apt-get install libssl-dev
-    sudo apt-get install libxml2-dev
-    sudo apt-get install python-pip
-    sudo apt-get install python-mysql.connector 
-    </code></pre>
+    <pre>sudo apt-get update
+sudo apt-get install git
+sudo apt-get install build-essential
+sudo apt-get install openjdk-7-jdk
+sudo apt-get install zip
+sudo apt-get install libssl-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install python-pip
+sudo apt-get install python-mysql.connector 
+    </pre>
 
     <h3>Fedora</h3>
 
     <h5>YUM</h5>
 
-    <pre><code>sudo yum install gcc-c++
-    sudo yum install git
-    sudo yum install openssl-devel
-    sudo java-1.7.0-openjdk-devel
-    sudo yum install libxml2-devel
-    sudo yum install bzip2
-    sudo yum install bzip2-libs
-    sudo yum install bzip2-devel
-    sudo yum install python-pip
-    sudo yum install mysql-connector-python
-    </code></pre>
+    <pre>sudo yum install gcc-c++
+sudo yum install git
+sudo yum install openssl-devel
+sudo java-1.7.0-openjdk-devel
+sudo yum install libxml2-devel
+sudo yum install bzip2
+sudo yum install bzip2-libs
+sudo yum install bzip2-devel
+sudo yum install python-pip
+sudo yum install mysql-connector-python
+    </pre>
 
     <h5>PIP (Python Modules)</h5>
 
-    <pre><code>pip install requests
-    pip install python-crontab
-    pip install argparse
-    </code></pre>
+    <pre>pip install requests
+pip install python-crontab
+pip install argparse
+    </pre>
 
     <h2>Download and build the Server software</h2>
 
@@ -63,11 +77,11 @@ base_url: "/"
 
     <p>Please note, you will be asked if you want to use the Jetty J2EE server. With MacPatch 2.5 Tomcat is now the default J2EE server. The Jetty distribution is old and may have security vulnerabilities. It is scheduled to be removed in the next release.</p>
 
-    <pre><code>• sudo mkdir -p /Library/MacPatch/tmp
-    • cd /Library/MacPatch/tmp
-    • sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
-    • sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
-    </code></pre>
+    <pre>sudo mkdir -p /Library/MacPatch/tmp
+cd /Library/MacPatch/tmp
+sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
+sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
+    </pre>
 
     <p><strong>Note:</strong> if you get a Error message "error: server certificate verification failed..." on the <strong>git clone</strong>, a simple fix is to allow the cert using "export GIT_SSL_NO_VERIFY=1"</p>
 
@@ -83,195 +97,196 @@ base_url: "/"
 
     <p><strong>Log in as the MySQL root user</strong></p>
 
-    <pre><code>mysql -u root -p
-    </code></pre>
+    <pre>mysql -u root -p
+    </pre>
 
     <p><strong>Run the following MySQL commands</strong><br>
-    <em>Replace the word "Password" with your own password.</em></p>
+        <em>Replace the word "Password" with your own password.</em></p>
 
-    <pre><code>mysql&gt; CREATE DATABASE MacPatchDB;
-    mysql&gt; CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
-    mysql&gt; CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
-    mysql&gt; SET GLOBAL log_bin_trust_function_creators = 1;
-    mysql&gt; FLUSH PRIVILEGES;
-    </code></pre>
+        <pre>mysql&gt; CREATE DATABASE MacPatchDB;
+mysql&gt; CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
+mysql&gt; CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
+mysql&gt; SET GLOBAL log_bin_trust_function_creators = 1;
+mysql&gt; FLUSH PRIVILEGES;
+        </pre>
 
-    <p><strong>Delete MySQL anonymous accounts</strong></p>
+        <p><strong>Delete MySQL anonymous accounts</strong></p>
 
-    <pre><code>mysql&gt; DROP USER ''@'localhost';
-    mysql&gt; DROP USER ''@'host_name';
-    mysql&gt; quit
-    </code></pre>
+        <pre>mysql&gt; DROP USER ''@'localhost';
+mysql&gt; DROP USER ''@'host_name';
+mysql&gt; quit
+        </pre>
 
-    <p><strong>Load Database Schema</strong></p>
+        <p><strong>Load Database Schema</strong></p>
 
-    <p>The database schema files are located on the MacPatch server in the <strong>/Library/MacPatch/Server/conf/Database/</strong> directory. To load the tables and the views, copy the <strong>MacPatchDB_Tables.sql</strong> and <strong>MacPatchDB_Views.sql</strong> files to the Database host. The following commands are for a server that is also hosting the MacPatch database.</p>
+        <p>The database schema files are located on the MacPatch server in the <strong>/Library/MacPatch/Server/conf/Database/</strong> directory. To load the tables and the views, copy the <strong>MacPatchDB_Tables.sql</strong> and <strong>MacPatchDB_Views.sql</strong> files to the Database host. The following commands are for a server that is also hosting the MacPatch database.</p>
 
-    <pre><code>% mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Tables.sql
-    % mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Views.sql
-    </code></pre>
+        <pre>% mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Tables.sql
+% mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Views.sql
+        </pre>
 
-    <hr>
-
-
-    <h2>Setup MacPatch Server</h2>
-
-    <p>The MacPatch server has five configuration script and should be run in the given order. The scripts are located on the server in <strong>/Library/MacPatch/Server/conf/scripts/Setup/</strong>.</p>
-
-    <table>
-        <tr>
-            <th>Script</th>
-            <th>Description</th>
-            <th>Server/Is Required</th>
-        </tr>
-        <tr>
-            <td>DataBaseLDAPSetup.sh </td>
-            <td>The database setup is required for MacPatch to function.</td>
-            <td>Master/Required</td>
-        </tr>
-        <tr>
-            <td>WebAdminSetup.sh </td>
-            <td>The MacPatch admin web console is required to use MacPatch. This section is an option for those who wish to setup additional servers for large environments.</td>
-            <td>Master/Required</td>
-        </tr>
-        <tr>
-            <td>WebServicesSetup.sh</td>
-            <td>The MacPatch web services are required to use MacPatch.</td>
-            <td>Master, Distribution/Required</td>
-        </tr>
-        <tr>
-            <td>PatchLoaderSetup.py</td>
-            <td>MacPatch requires gathering all of Apple Software updates from an Apple Software Update server, so that Apple patches can be assigned to a patch group for patching.</td>
-            <td>Master, Distribution/Recommended</td>
-        </tr>
-        <tr>
-            <td>SymantecAntivirusSetup.py</td>
-            <td>MacPatch supports patching Symantec Antivirus definitions. Not all sites use SAV/SEP so this step is optional.</td>
-            <td>Master/Optional</td>
-        </tr>
-        <tr>
-            <td>StartServices.py</td>
-            <td>Depending on your choices this script will start all MacPatch services.<br>
-            Script has multiple arguments.<br>
-            • Start All Services - StartServices.py --load All<br>
-            • Stop All Services - StartServices.py --unload All
-            </td>
-            <td>Master, Distribution</td>
-        </tr>
-    </table>
+        <hr>
 
 
-    <h3>Download Content -</h3>
+        <h2>Setup MacPatch Server</h2>
 
-    <h5>Apple Updates</h5>
+        <p>The MacPatch server has five configuration script and should be run in the given order. The scripts are located on the server in <strong>/Library/MacPatch/Server/conf/scripts/Setup/</strong>.</p>
 
-    <p>Apple patch content will download eventually on it's own cycle, but for the first time it's recommended to download it manually.</p>
-
-    <p>Run the following command via the Terminal.app on the <em>Master</em> MacPatch server.</p>
-
-    <pre><code>sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPSUSPatchSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
-    </code></pre>
-
-    <h5>Symantec AntiVirus Defs</h5>
-
-    <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
-
-    <pre><code> sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPAVDefsSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plist
-    </code></pre>
-
-    <hr>
-
-
-    <h2>Configure MacPatch - Admin Console</h2>
-
-    <p>Now that the MacPatch server is up and running, you will need to configure the environment.</p>
-
-    <h3>First Login</h3>
-
-    <p>The default user name is "mpadmin" and the password is "*mpadmin*". You will need to login for the first time with this account to do all of the setup tasks. Once these tasks are completed it's recommended that this accounts password be changed. This can be done by editing the siteconfig.xml file, which is located in <em>/Library/MacPatch/Server/conf/etc/</em>.</p>
-
-    <h3>Default Configuration</h3>
-
-    <h5>MacPatch Server Info</h5>
-
-    <p>Each MacPatch server need to be added to the environment. By default we will be adding the first server, the <em>Master</em> to the list.</p>
-
-    <ul>
-    <li>Go to "Admin-> Server -> MacPatch Servers"</li>
-    <li>Click the "Plus" button to add a new server</li>
-    </ul>
-
-
-    <p>Example data for Master server:</p>
-
-    <ul>
-    <li><strong>Server</strong>: server1.macpatch.com</li>
-    <li><strong>Port</strong>: 2600</li>
-    <li><strong>Use SSL</strong>: Yes</li>
-    <li><strong>Use SSL Auth</strong>: NO (Not Supported Yet)</li>
-    <li><strong>Is Master</strong>: Yes</li>
-    <li><strong>Is Proxy</strong>: No</li>
-    <li><strong>Active</strong>: Yes</li>
-    </ul>
+        <table>
+            <tr>
+                <th>Script</th>
+                <th>Description</th>
+                <th>Server/Is Required</th>
+            </tr>
+            <tr>
+                <td>DataBaseLDAPSetup.sh </td>
+                <td>The database setup is required for MacPatch to function.</td>
+                <td>Master/Required</td>
+            </tr>
+            <tr>
+                <td>WebAdminSetup.sh </td>
+                <td>The MacPatch admin web console is required to use MacPatch. This section is an option for those who wish to setup additional servers for large environments.</td>
+                <td>Master/Required</td>
+            </tr>
+            <tr>
+                <td>WebServicesSetup.sh</td>
+                <td>The MacPatch web services are required to use MacPatch.</td>
+                <td>Master, Distribution/Required</td>
+            </tr>
+            <tr>
+                <td>PatchLoaderSetup.py</td>
+                <td>MacPatch requires gathering all of Apple Software updates from an Apple Software Update server, so that Apple patches can be assigned to a patch group for patching.</td>
+                <td>Master, Distribution/Recommended</td>
+            </tr>
+            <tr>
+                <td>SymantecAntivirusSetup.py</td>
+                <td>MacPatch supports patching Symantec Antivirus definitions. Not all sites use SAV/SEP so this step is optional.</td>
+                <td>Master/Optional</td>
+            </tr>
+            <tr>
+                <td>StartServices.py</td>
+                <td>Depending on your choices this script will start all MacPatch services.<br>
+                    Script has multiple arguments.<br>
+                    • Start All Services - StartServices.py --load All<br>
+                    • Stop All Services - StartServices.py --unload All
+                </td>
+                <td>Master, Distribution</td>
+            </tr>
+        </table>
 
 
-    <h5>Agent Configuration</h5>
+        <h3>Download Content -</h3>
 
-    <p>Before you can upload the Agent software an client agent configuration need to be created.</p>
+        <h5>Apple Updates</h5>
 
-    <ul>
-    <li>Go to "Admin -> Client Agents -> Configure"</li>
-    <li>Click the "Create New Agent Config" button</li>
-    <li>Name the first configuration "Default"</li>
-    <li>Set the following 3 properties to be enforced
+        <p>Apple patch content will download eventually on it's own cycle, but for the first time it's recommended to download it manually.</p>
 
-    <ul>
-    <li>MPServerAddress</li>
-    <li>MPServerPort</li>
-    <li>MPServerSSL</li>
-    </ul>
-    </li>
-    <li>Click the save button</li>
-    <li>Click the icon in the "Default" column for the default configuration. <strong>(Important Step)</strong></li>
-    </ul>
+        <p>Run the following command via the Terminal.app on the <em>Master</em> MacPatch server.</p>
 
+        <pre>sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPSUSPatchSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
+        </pre>
 
-    <h5>Create Default Patch Group</h5>
+        <h5>Symantec AntiVirus Defs</h5>
 
-    <ul>
-    <li>Go to "Patches -> Patch Groups"</li>
-    <li>Click the "Plus" button to add a new group</li>
-    <li>Set the following 2 properties
+        <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
 
-    <ul>
-    <li><strong>Patch Group</strong>: "RecommendedPatches"</li>
-    <li><strong>Type</strong>: Production</li>
-    </ul>
-    </li>
-    </ul>
+        <pre> sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPAVDefsSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plist
+        </pre>
+
+        <hr>
 
 
-    <p>To edit the contents for the patch group simply click the "Pencil" icon next to the group name. To add patches click the check boxes to add or subtract patches from the group. When done click the "Save" icon. <strong>(Important Step)</strong></p>
+        <h2>Configure MacPatch - Admin Console</h2>
 
-    <p><strong>Please note: </strong>Only production patches will be visible to a production group.</p>
+        <p>Now that the MacPatch server is up and running, you will need to configure the environment.</p>
 
-    <h5>Upload the Client Agent</h5>
+        <h3>First Login</h3>
 
-    <p>To upload a client agent you will need to build the client first. Please follow the "<strong>Building the Client</strong>" document before continuing.</p>
+        <p>The default user name is "mpadmin" and the password is "*mpadmin*". You will need to login for the first time with this account to do all of the setup tasks. Once these tasks are completed it's recommended that this accounts password be changed. This can be done by editing the siteconfig.xml file, which is located in <em>/Library/MacPatch/Server/conf/etc/</em>.</p>
 
-    <ul>
-    <li>Go to "Admin-> Client Agents -> Deploy"</li>
-    <li>Download the "MacPatch Agent Uploader"</li>
-    <li>Double Click the "Agent Uploader.app"
+        <h3>Default Configuration</h3>
 
-    <ul>
-    <li>Enter the MacPatch Server</li>
-    <li>Choose the agent package (e.g. MPClientInstall.pkg.zip)</li>
-    <li>Click "Upload" button</li>
-    </ul>
-    </li>
-    </ul>
-</div>
+        <h5>MacPatch Server Info</h5>
+
+        <p>Each MacPatch server need to be added to the environment. By default we will be adding the first server, the <em>Master</em> to the list.</p>
+
+        <ul>
+            <li>Go to "Admin-> Server -> MacPatch Servers"</li>
+            <li>Click the "Plus" button to add a new server</li>
+        </ul>
+
+
+        <p>Example data for Master server:</p>
+
+        <ul>
+            <li><strong>Server</strong>: server1.macpatch.com</li>
+            <li><strong>Port</strong>: 2600</li>
+            <li><strong>Use SSL</strong>: Yes</li>
+            <li><strong>Use SSL Auth</strong>: NO (Not Supported Yet)</li>
+            <li><strong>Is Master</strong>: Yes</li>
+            <li><strong>Is Proxy</strong>: No</li>
+            <li><strong>Active</strong>: Yes</li>
+        </ul>
+
+
+        <h5>Agent Configuration</h5>
+
+        <p>Before you can upload the Agent software an client agent configuration need to be created.</p>
+
+        <ul>
+            <li>Go to "Admin -> Client Agents -> Configure"</li>
+            <li>Click the "Create New Agent Config" button</li>
+            <li>Name the first configuration "Default"</li>
+            <li>Set the following 3 properties to be enforced
+
+                <ul>
+                    <li>MPServerAddress</li>
+                    <li>MPServerPort</li>
+                    <li>MPServerSSL</li>
+                </ul>
+            </li>
+            <li>Click the save button</li>
+            <li>Click the icon in the "Default" column for the default configuration. <strong>(Important Step)</strong></li>
+        </ul>
+
+
+        <h5>Create Default Patch Group</h5>
+
+        <ul>
+            <li>Go to "Patches -> Patch Groups"</li>
+            <li>Click the "Plus" button to add a new group</li>
+            <li>Set the following 2 properties
+
+                <ul>
+                    <li><strong>Patch Group</strong>: "RecommendedPatches"</li>
+                    <li><strong>Type</strong>: Production</li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <p>To edit the contents for the patch group simply click the "Pencil" icon next to the group name. To add patches click the check boxes to add or subtract patches from the group. When done click the "Save" icon. <strong>(Important Step)</strong></p>
+
+        <p><strong>Please note: </strong>Only production patches will be visible to a production group.</p>
+
+        <h5>Upload the Client Agent</h5>
+
+        <p>To upload a client agent you will need to build the client first. Please follow the "<strong>Building the Client</strong>" document before continuing.</p>
+
+        <ul>
+            <li>Go to "Admin-> Client Agents -> Deploy"</li>
+            <li>Download the "MacPatch Agent Uploader"</li>
+            <li>Double Click the "Agent Uploader.app"
+
+                <ul>
+                    <li>Enter the MacPatch Server</li>
+                    <li>Choose the agent package (e.g. MPClientInstall.pkg.zip)</li>
+                    <li>Click "Upload" button</li>
+                </ul>
+            </li>
+        </ul>
+        <br><br><br><br>
+    </div>

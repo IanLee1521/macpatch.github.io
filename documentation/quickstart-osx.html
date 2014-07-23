@@ -2,14 +2,28 @@
 layout: documentation
 title: Quick Start - OSX
 slug: documentation
+side_nav: quickstart-osx
 base_url: "/"
 ---
 
+<style>
+table {
+    margin: 10px 0 15px 0;
+    border-collapse: collapse;
+}
+td,th { 
+    border: 1px solid #ddd;
+    padding: 3px 10px;
+}
+th {
+    padding: 5px 10px;  
+}
+</style>
 
 <div class="container" id="content">
     <h1>MacPatch - Quick Start Guide for Mac OS X</h1>
 
-    <p>Version 1.0 for MacPatch v2.5.x</p>
+    <p><strong>Version 1.0 for MacPatch v2.5.x</strong></p>
 
     <p>This is a quick start guide to getting MacPatch installed and running on a Mac OS X based system. For the purpose of this guide we will be installing on a Mac OS X 10.9.x system.</p>
 
@@ -38,10 +52,10 @@ base_url: "/"
 
     <p>Please note, you will be asked if you want to use the Jetty J2EE server. With MacPatch 2.5 Tomcat is now the default J2EE server. The Jetty distribution is old and may have security vulnerabilities. It is scheduled to be removed in the next release.</p>
 
-    <pre><code>• sudo mkdir -p /Library/MacPatch/tmp
-    • cd /Library/MacPatch/tmp
-    • sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
-    • sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
+    <pre><code>sudo mkdir -p /Library/MacPatch/tmp
+cd /Library/MacPatch/tmp
+sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
+sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
     </code></pre>
 
     <p>Once the compile and copy process is completed, the MacPatch server software is now installed and ready to be configured.</p>
@@ -63,20 +77,20 @@ base_url: "/"
     <em>Replace the word "Password" with your own password.</em></p>
 
     <pre><code>mysql&gt; CREATE DATABASE MacPatchDB;
-    mysql&gt; CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
-    mysql&gt; CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
-    mysql&gt; GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
-    mysql&gt; SET GLOBAL log_bin_trust_function_creators = 1;
-    mysql&gt; FLUSH PRIVILEGES;
+mysql&gt; CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
+mysql&gt; CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
+mysql&gt; GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
+mysql&gt; SET GLOBAL log_bin_trust_function_creators = 1;
+mysql&gt; FLUSH PRIVILEGES;
     </code></pre>
 
     <p><strong>Delete MySQL anonymous accounts</strong></p>
 
     <pre><code>mysql&gt; DROP USER ''@'localhost';
-    mysql&gt; DROP USER ''@'host_name';
-    mysql&gt; quit
+mysql&gt; DROP USER ''@'host_name';
+mysql&gt; quit
     </code></pre>
 
     <p><strong>Load Database Schema</strong></p>
@@ -84,7 +98,7 @@ base_url: "/"
     <p>The database schema files are located on the MacPatch server in the <strong>/Library/MacPatch/Server/conf/Database/</strong> directory. To load the tables and the views, copy the <strong>MacPatchDB_Tables.sql</strong> and <strong>MacPatchDB_Views.sql</strong> files to the Database host. The following commands are for a server that is also hosting the MacPatch database.</p>
 
     <pre><code>% mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Tables.sql
-    % mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Views.sql
+% mysql MacPatchDB -u mpdbadm -p &lt; /Library/MacPatch/Server/conf/Database/MacPatchDB_Views.sql
     </code></pre>
 
     <hr>
@@ -247,5 +261,5 @@ base_url: "/"
     </ul>
     </li>
     </ul>
-
+<br><br><br><br>
 </div>

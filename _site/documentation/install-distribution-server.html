@@ -81,11 +81,16 @@
 
         <!-- Sidebar navbar for Documentation pages -->
 <ul class="nav nav-sidebar">
-  <li><a href="/documentation/quickstart-osx.html">Quick Start - OSX</a></li>
-  <li><a href="/documentation/quickstart-linux.html">Quick Start - Linux</a></li>
-  <li><a href="/documentation/building-the-client.html">Building The Client</a></li>
-  <li><a href="/documentation/custom-patch-content.html">Custom Patch Content</a></li>
-  <li><a href="/documentation/install-distribution-server.html">Install Distribution Server</a></li>
+  <li>
+    <a href="/documentation/quickstart-osx.html">Quick Start - OSX</a></li>
+  <li>
+    <a href="/documentation/quickstart-linux.html">Quick Start - Linux</a></li>
+  <li>
+    <a href="/documentation/building-the-client.html">Building The Client</a></li>
+  <li>
+    <a href="/documentation/custom-patch-content.html">Custom Patch Content</a></li>
+  <li class="active">
+    <a href="/documentation/install-distribution-server.html">Install Distribution Server</a></li>
 </ul>
 
 
@@ -106,33 +111,33 @@
 	<h5>APT</h5>
 
 	<pre><code>sudo apt-get update
-	sudo apt-get install git
-	sudo apt-get install build-essential
-	sudo apt-get install openjdk-7-jdk
-	sudo apt-get install zip
-	sudo apt-get install libssl-dev
-	sudo apt-get install libxml2-dev
-	sudo apt-get install python-pip
-	sudo apt-get install python-mysql.connector 
+sudo apt-get install git
+sudo apt-get install build-essential
+sudo apt-get install openjdk-7-jdk
+sudo apt-get install zip
+sudo apt-get install libssl-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install python-pip
+sudo apt-get install python-mysql.connector 
 	</code></pre>
 
 	<h5>YUM</h5>
 
 	<pre><code>sudo yum install gcc-c++
-	sudo yum install openssl-devel
-	sudo java-1.7.0-openjdk-devel
-	sudo yum install libxml2-devel
-	sudo yum install bzip2
-	sudo yum install bzip2-libs
-	sudo yum install bzip2-devel
-	sudo yum install python-pip
-	sudo yum install mysql-connector-python
+sudo yum install openssl-devel
+sudo java-1.7.0-openjdk-devel
+sudo yum install libxml2-devel
+sudo yum install bzip2
+sudo yum install bzip2-libs
+sudo yum install bzip2-devel
+sudo yum install python-pip
+sudo yum install mysql-connector-python
 	</code></pre>
 
 	<h5>Python</h5>
 
 	<pre><code>pip install requests
-	pip install python-crontab
+pip install python-crontab
 	</code></pre>
 
 	<h2>Configure Server</h2>
@@ -140,17 +145,17 @@
 	<h5>Distribution Server Setup &amp; Config</h5>
 
 	<pre><code>mkdir -p /Library/MacPatch
-	cp {FROM_PATH}/MacPatch_Server.zip /Library/MacPatch
-	cd /Library/MacPatch
-	unzip ./MacPatch_Server.zip
-	mv ./MacPatch_Server ./Server
+cp {FROM_PATH}/MacPatch_Server.zip /Library/MacPatch
+cd /Library/MacPatch
+unzip ./MacPatch_Server.zip
+mv ./MacPatch_Server ./Server
 	</code></pre>
 
 	<h5>Run Setup Scripts</h5>
 
 	<pre><code>cd /Library/MacPatch/Server 
-	./conf/scripts/Setup/DataBaseLDAPSetup.sh
-	./conf/scripts/Setup/WebServicesSetup.sh
+./conf/scripts/Setup/DataBaseLDAPSetup.sh
+./conf/scripts/Setup/WebServicesSetup.sh
 	</code></pre>
 
 	<p>This distribution server is now configured and running. The last step is to edit the Apache virtual host balancer to include the new distribution server.</p>
@@ -162,8 +167,8 @@
 	<p>Find and edit the lines:</p>
 
 	<pre><code>#WslBalanceStart
-	BalancerMember http://localhost:3601 route=localhost-site1 loadfactor=50
-	#WslBalanceStop  
+BalancerMember http://localhost:3601 route=localhost-site1 loadfactor=50
+#WslBalanceStop  
 	</code></pre>
 
 	<p>Add the line below the first "<strong>BalancerMember</strong>"</p>

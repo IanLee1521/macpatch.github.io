@@ -81,11 +81,16 @@
 
         <!-- Sidebar navbar for Documentation pages -->
 <ul class="nav nav-sidebar">
-  <li><a href="/documentation/quickstart-osx.html">Quick Start - OSX</a></li>
-  <li><a href="/documentation/quickstart-linux.html">Quick Start - Linux</a></li>
-  <li><a href="/documentation/building-the-client.html">Building The Client</a></li>
-  <li><a href="/documentation/custom-patch-content.html">Custom Patch Content</a></li>
-  <li><a href="/documentation/install-distribution-server.html">Install Distribution Server</a></li>
+  <li>
+    <a href="/documentation/quickstart-osx.html">Quick Start - OSX</a></li>
+  <li>
+    <a href="/documentation/quickstart-linux.html">Quick Start - Linux</a></li>
+  <li class="active">
+    <a href="/documentation/building-the-client.html">Building The Client</a></li>
+  <li>
+    <a href="/documentation/custom-patch-content.html">Custom Patch Content</a></li>
+  <li>
+    <a href="/documentation/install-distribution-server.html">Install Distribution Server</a></li>
 </ul>
 
 
@@ -118,10 +123,10 @@
 
 	<p>To download and build the MacPatch client agent software there are just a couple of Terminal commands to run.</p>
 
-	<pre><code>• sudo mkdir -p /Library/MacPatch/tmp
-	• cd /Library/MacPatch/tmp
-	• sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
-	• sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildClient.sh
+	<pre><code>sudo mkdir -p /Library/MacPatch/tmp
+cd /Library/MacPatch/tmp
+sudo git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
+sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildClient.sh
 	</code></pre>
 
 	<p>Once the compile and copy process is completed the finished client agent software can be found in "<strong>/Library/MacPatch/tmp/Client/Combined/MPClientInstall.pkg.zip</strong>"</p>
