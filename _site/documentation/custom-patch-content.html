@@ -96,23 +96,8 @@
 
       </div>
       <div class="col-xs-7">
-        
-        <style>
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
-</style>
 
-
-<div class="container" id="content">
+          <div class="container-fluid" id="content">
 
     <h1>MacPatch - Custom Patch Content</h1>
 
@@ -158,7 +143,7 @@ th {
 
     <h3>Patch Criteria Language - Cheat Sheet <a name="cheatSheet"></a></h3>
 
-    <table>
+    <table class="table table-bordered table-striped">
         <tr>
             <th>Base Criteria</th>
             <th>Description</th>
@@ -166,7 +151,7 @@ th {
         <tr>
             <td>BundleID</td>
             <td>
-                <table id="sampleInner">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>Query</th>
                         <th>Value</th>
@@ -191,7 +176,7 @@ th {
         <tr>
             <td>File</td>
             <td>
-                <table id="sampleInner">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>Query</th>
                         <th>Value</th>
@@ -227,7 +212,7 @@ th {
             <tr>
                 <td>Script</td>
                 <td>
-                    <table id="sampleInner">
+                    <table class="table table-bordered table-striped">
                         <tr>
                             <th>Query</th>
                             <th>Value</th>
@@ -263,7 +248,7 @@ th {
     <pre><code>defaults write /Library/Preferences/gov.llnl.mpagent.plist PatchState All
     </code></pre>
 </div>
-
+        
       </div>
     </div>
   </div>
