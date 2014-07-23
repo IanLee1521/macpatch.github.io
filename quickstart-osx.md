@@ -1,10 +1,3 @@
----
-layout: default
-title: MacPatch
-slug: home
-base_url: "./"
----
-
 #MacPatch - Quick Start Guide for Mac OS X
 Version 1.0 for MacPatch v2.5.x
 
