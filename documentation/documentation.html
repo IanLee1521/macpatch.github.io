@@ -1,0 +1,216 @@
+---
+layout: documentation
+title: Docs
+slug: documentation
+side_nav: more
+base_url: "/"
+---
+
+<div class="container-fluid" id="content">
+  <h2>MacPatch v2.5.0 Install and Setup Guide</h2>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" id="requirements">
+      <h2 class="panel-title">System Requirements</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p class="lead">Client</p>
+      <ul>
+        <li>Mac OS X Intel 32bit or 64bit.</li>
+        <li>Mac OS X 10.7.0 or higher.</li>
+      </ul>
+      
+      <p class="lead">Server</p>
+      <ul>
+        <li>Mac OS X 10.7 or higher.</li>
+        <li>Linux Fedora & Ubuntu</li>
+        <li>4GB of RAM, 8GB is recommended.</li>
+        <li>120GB of free disk space</li>
+        <li>Java 1.6 or higher.</li>
+        <li>MySQL version 5.1 or higher. MySQL 5.6 is recommended.</li>
+      </ul>
+
+      <p><h5><em>Java 7 Issue</em></h5></p>
+      <p>If your using Java 1.7, Oracle did not include the "Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7". Apparently they are needed for any stronger keys then 128-bit keys. You can get the Unlimited Strength bundles from the Oracle site, <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a> Installing it is as "simple" as dumping them to the "/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/jre/lib/security/" directory.</p>
+
+      <p class="lead">Ports (TCP) used by server</p>
+      <h5>Default</h5>
+      <ul>
+        <li>80, 443, 2600, 3601, 4601</li>
+      </ul>
+      <h5>Configurable</h5>
+      <ul>
+        <li>2600, 3601, 4601</li>
+      </ul>
+    </div>
+
+    <div class="panel-heading" id="tuning">
+      <h2 class="panel-title">System Tuning</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>In order to get the most out of Mac OS X Client/Server operating system some of it’s default limits need to be increased. Please run the following commands via Terminal application. Note, a reboot is recommended after applying these changes.</p>
+      <p>Note, these adjusted settings are for a system with 4GB of RAM.</p>
+      <pre># echo 'kern.maxfiles=20480' | sudo tee -a /etc/sysctl.conf
+# echo -e 'limit maxfiles 8192 20480\nlimit maxproc 1000 2500' | sudo tee -a /etc/launchd.conf
+# echo 'ulimit -n 4096' | sudo tee -a /etc/profile
+</pre>
+      <p>Suggested Links:</p>
+      <ul>
+        <li><a href="http://support.apple.com/kb/HT4022">http://support.apple.com/kb/HT4022</a></li>
+        <li><a href="http://support.apple.com/kb/HT3854">http://support.apple.com/kb/HT3854</a></li>
+      </ul>
+    </div>
+
+    <div class="panel-heading" id="database">
+      <h2 class="panel-title">Database</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>The MacPatch environment requires a MySQL database to function. It is recommended that you install the database software prior to installing the MacPatch server software. It is recommended that MySQL version 5.5.x or 5.6.x Enterprise edition be used, but the community edition will also work. It is also recommended that the MySQL server be dedicated to the MacPatch server(s).</p>
+      <p>A MySQL configuration file (my.cnf) has been included with the MacPatch source as a starting baseline. Please note, the configuration file is for a MacPatch server containing the MacPatch database with 4Gig's of RAM.</p>
+      <p>Login as <strong>root</strong></p>
+      <pre>mysql -u root -p</pre>
+      <p>Run the following MySQL commands</p>
+      <pre>mysql> CREATE DATABASE MacPatchDB;
+mysql> CREATE USER 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT ALL ON MacPatchDB.* TO 'mpdbadm'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT ALL PRIVILEGES ON MacPatchDB.* TO 'mpdbadm'@'localhost' IDENTIFIED BY 'Password';
+mysql> CREATE USER 'mpdbro'@'%' IDENTIFIED BY 'Password';
+mysql> GRANT SELECT ON MacPatchDB.* TO 'mpdbro'@'%';
+mysql> SET GLOBAL log_bin_trust_function_creators = 1;
+mysql> FLUSH PRIVILEGES;
+</pre>
+      <p>Delete MySQL anonymous accounts</p>
+      <pre>mysql> DROP USER ''@'localhost';
+mysql> DROP USER ''@'host_name';
+mysql> quit
+</pre>
+      <p>Load database schema</p>
+      <pre>% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_tables.sql
+% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_views.sql
+</pre>
+    </div>
+
+    <div class="panel-heading" id="build-server">
+      <h2 class="panel-title">Building the MacPatch Server</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>Building the base server software is very simple process. First the a tmeporary directory to hold the cloned MacPatch repository needs to be created. Clone the repository and run the "MPBuildServer.sh" script.</p>
+      <p>Note, Xcode needs to be installed and the command line tools need to be installed as well. Xcode is a free download via the "App Store.app".</p>
+      <p>Install Steps via command line:</p>
+      <pre>mkdir -p /Library/MacPatch/tmp
+cd /Library/MacPatch/tmp
+git clone https://github.com/SMSG-MAC-DEV/MacPatch.git
+/Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
+</pre>            
+    </div>
+
+    <div class="panel-heading" id="asus">
+      <h2 class="panel-title">Apple Software Update Server</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>The MacPatch server environment can be used with or without setting up your own Apple SoftwareUpdate server. By default all Apple Software Updates will be downloaded from Apple's servers. 
+If you choose to run your own Apple SoftwareUpdate server it is recommended to install it on a separate server. Also, if you plan on enabling and disabling patches/updates on the Apple SoftwarUpdate server you need to change the CatalogURL's in the "gov.llnl.mp.patchloader.plist" on the MacPatch server.</p>
+    </div>
+
+    <div class="panel-heading" id="server-config">
+      <h2 class="panel-title">Server Configuration</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>The master MacPatch server requires that several components be setup and configured for the environment to work properly.</p>
+
+      <h5>Java check</h5>
+      <p>Before any of the services are configured and launched now is the right time to make sure JAVA is installed. The best way to do this is to run " java -version" from the Terminal.app. If it's not installed the OS will prompt you to install it.</p>
+
+      <p class="lead">Server configuration steps</p>
+      <p>Run the following shell scripts in order to configure</p>
+      <ol>
+        <li>
+          <p>DataBaseLDAPSetup.sh (Master)</p>
+          <ol>
+            <li>The database setup is required for MacPatch to function.</li>
+            <li>The LDAP/AD External Web Admin Authentication is optional, see note below about certificates.</li>
+          </ol>
+        
+        
+          <h5>Add remote certificates</h5>
+          <p>If you have configured MacPatch to do user authentication via Active Directory/LDAP, which uses SSL to communicate, you might need to add the remote certificate to a list of trusted certificates. If a major certificate authority issued your certificate for your LDAP environment you can most likely skip this step.</p>
+          
+          <p>Open a new Terminal window and run the following command</p>
+          <pre># /Library/MacPatch/Server/conf/scripts/addRemoteCert.sh –c \
+"server.name.com 3269/636"
+</pre>
+
+          <p>Now close the window and continue with starting the MacPatch server services.</p>
+        </li>
+        <li>
+          <p>WebAdminSetup.sh (Master)</p>
+          <p>The MacPatch admin web console is required to use MacPatch. This section is an option for those who wish to setup additional servers for large environments.</p>
+        </li>
+
+        <li>
+          <p>WebServicesSetup.sh (Master)</p>
+          <p>The MacPatch web services are required to use MacPatch.<br>Note: The TCP port used in this config is used for NON-SSL traffic.</p>
+        </li>
+        <li>
+          <p>PatchLoaderSetup.sh</p>
+          <p>MacPatch requires gathering all of Apple Software updates from an Apple Software Update server. So that Apple patches can be assigned to a patch group for patching.</p>
+        </li>
+        <li>
+          <p>SymantecAntivirusSetup.sh (Optional)</p>
+          <p>MacPatch supports patching Symantec Antivirus definitions. Not all sites use SAV/SEP so this step is optional.</p>
+        </li>
+        <li>
+          <p>StartServices.sh</p>
+          <p>Depending on your choices this script will start all MacPatch services.</p>
+        </li>
+      </ol>
+
+      <p class="lead">Download content</p>
+
+      <h5>Apple content</h5>
+      <p>Apple patch content will download eventually on it's cycle but for the first time it's recommended to download it manually.</p>
+      <p>Run the following command via the Terminal.app</p>
+      <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPPatchLoader -c \
+/Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
+</pre>
+      
+      <h5>Symantec AntiVirus defs</h5>
+      <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
+      <p>Run the following command via the Terminal.app</p>
+      <pre># sudo -s _appserver /Library/MacPatch/Server/bin/MPSAVDownloader -p \
+/Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plis
+</pre>
+    </div>
+
+    <div class="panel-heading" id="build-client">
+      <h2 class="panel-title">Building the MacPatch Client Software</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>Content</p>
+    </div>
+
+    <div class="panel-heading" id="web-admin">
+      <h2 class="panel-title">Web Admin setup</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>Content</p>
+    </div>
+
+    <div class="panel-heading" id="backup">
+      <h2 class="panel-title">Backup</h2>
+    </div>
+    <div class="panel-body">
+      <small><a class="pull-right" href="#content">go to top</a></small>
+      <p>Content</p>
+    </div>
+
+  </div>
+</div>
