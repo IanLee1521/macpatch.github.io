@@ -1,6 +1,0 @@
-#!/bin/bash
-# run local Jekyll
-bundle exec jekyll serve
-
-# To update Jekyll run the following command
-# bundle update
