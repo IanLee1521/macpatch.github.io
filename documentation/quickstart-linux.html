@@ -172,14 +172,14 @@ mysql&gt; quit
 
         <p>Run the following command via the Terminal.app on the <em>Master</em> MacPatch server.</p>
 
-        <pre>sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPSUSPatchSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
+        <pre>sudo -u _appserver /Library/MacPatch/Server/conf/scripts/MPSUSPatchSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mp.patchloader.plist
         </pre>
 
         <h5>Symantec AntiVirus Defs</h5>
 
         <p>If you have elected to deploy Symantec AntiVirus definitions via MacPatch then it's also recommended that you download the content manually for the first time.</p>
 
-        <pre> sudo -s _appserver /Library/MacPatch/Server/conf/scripts/MPAVDefsSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plist
+        <pre> sudo -u _appserver /Library/MacPatch/Server/conf/scripts/MPAVDefsSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plist
         </pre>
 
         <hr>
