@@ -41,9 +41,11 @@ base_url: "/"
 
     <p>While most LDAP/Active Directory environments have many similar configuration settings each environment has it’s own tweaks. In order to do better filtering on the LDAP queries you might need to modify the ldap filter to achieve what you want.  Once example of this could be to narrow the scope of allowed users by requiring that they belong to a group. To do this you need to edit the “Application.cfc” file located in “/Library/MacPatch /Server/tomcat-mpsite/webapps/ROOT/admin/Application.cfc”. The “filter” string should be located on or around line 299 in the file.</p>
 
-    <p>Default:<br>filter="(&(objectClass=*)(#application.settings.ldap.loginAttr#=#arguments.username##application.settings.ldap.loginUsrSufix#))"</p>
+    <p>Default:</p>
+    <pre>filter="(&(objectClass=*)(#application.settings.ldap.loginAttr#=#arguments.username##application.settings.ldap.loginUsrSufix#))"</pre>
 
-    <p>With Group (<strong>In Bold</strong>):<br>filter="(&(objectClass=*)(#application.settings.ldap.loginAttr#=#arguments.username##application.settings.ldap.loginUsrSufix#)<strong>(memberOf=CN=MacPatch-Admins,OU=Groups,DC=example,DC=com)</strong>)"</p>
+    <p>With Group (<strong>In Bold</strong>):</p>
+    <pre>filter="(&(objectClass=*)(#application.settings.ldap.loginAttr#=#arguments.username##application.settings.ldap.loginUsrSufix#)<strong>(memberOf=CN=MacPatch-Admins,OU=Groups,DC=example,DC=com)</strong>)"</pre>
 
     <p>The LDAP settings may also be edited without the use of the “DataBaseLDAPSetup.py” script. To edit these settings open the “/Library/MacPatch/Server/conf/etc/siteconfig.json” file.</p>
 
