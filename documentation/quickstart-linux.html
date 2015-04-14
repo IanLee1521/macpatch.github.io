@@ -13,7 +13,7 @@ base_url: "/"
 
     <p>Please note, this has been tested on Ubuntu 12.10, Fedora 20. While RHEL and CentOS may work they have not been tested at this time.</p>
 
-    <h2>Required Software</h2>
+    <h2 id="software">Required Software</h2>
 
     <p>There are two prerequisites to installing the MacPatch server software on Linux. Please install the following packages based on your Linux distro.</p>
 
@@ -55,7 +55,7 @@ sudo pip install python-crontab
 sudo pip install argparse
     </pre>
 
-    <h2>Download and build the Server software</h2>
+    <h2 id="download">Download and build the Server software</h2>
 
     <p>To download and build the MacPatch server software is just a few Terminal commands. Run the following commands to build and install the software.</p>
 
@@ -71,7 +71,7 @@ sudo /Library/MacPatch/tmp/MacPatch/scripts/MPBuildServer.sh
 
     <p>Once the compile and copy process is completed, the MacPatch server software is now installed and ready to be configured.</p>
 
-    <h2>MySQL Database</h2>
+    <h2 id="mysql">MySQL Database</h2>
 
     <p>MacPatch requires the use of MySQL database. The database can be installed on the first server built or it can be installed on a separate host. MySQL version 5.5.x or higher is required. MySQL 5.6.x is recommended due to it's performance enhancements. Also, the MySQL InnoDB engine is required.</p>
 
@@ -115,7 +115,7 @@ mysql&gt; quit
         <hr>
 
 
-        <h2>Setup MacPatch Server</h2>
+        <h2 id="setup">Setup MacPatch Server</h2>
 
         <p>The MacPatch server has five configuration script and should be run in the given order. The scripts are located on the server in <strong>/Library/MacPatch/Server/conf/scripts/Setup/</strong>.</p>
 
@@ -183,7 +183,7 @@ mysql&gt; quit
         <hr>
 
 
-        <h2>Configure MacPatch - Admin Console</h2>
+        <h2 id="console">Configure MacPatch - Admin Console</h2>
 
         <p>Now that the MacPatch server is up and running, you will need to configure the environment.</p>
 
