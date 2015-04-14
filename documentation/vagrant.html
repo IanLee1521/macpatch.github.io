@@ -16,17 +16,17 @@ base_url: "/"
     <h2>Setup</h2>
 
     <ol>
-        <li>Install [Vagrant](https://docs.vagrantup.com/v2/installation/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)</li>
+        <li>Install <a href="https://docs.vagrantup.com/v2/installation/">Vagrant</a> and [<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
         <li>Clone this repo <code>git clone https://github.com/SMSG-MAC-DEV/MacPatch-Vagrant.git</code></li>
         <li><code>cd</code> into the project directory</li>
-        <li>Start the VM by running <code>vagrant up</code>li>
+        <li>Start the VM by running <code>vagrant up</code></li>
     </ol>
 
     <h2>Possible issues with an SSL proxy</h2>
 
     <p>If your are behind an SSL proxy you may encounter errors during the setup and build process. Below are workarounds that I'm aware of.</p>
 
-    <h3>Vagrant</h3>
+    <h4>Vagrant</h4>
     <p>Vagrant may run into certificate errors when attempting to download boxes. In some cases adding <code>--insecure</code> to the command is enough, but in some case you may need to download and add the box manually.</p>
 
     <pre><code>cd /tmp/
@@ -35,17 +35,17 @@ vagrant box add "ubuntu/trusty64" /tmp/trusty-server-cloudimg-amd64-vagrant-disk
 rm /tmp/trusty-server-cloudimg-amd64-vagrant-disk1.box
     </pre></code>
 
-    <h3>PIP</h3>
+    <h4>PIP</h4>
     <p>You may see certificate errors from pip commands in the bootstrap.sh provisioning script. To workaround this, copy your site's certificate into the project directory. Then modify the file <code>bootstrap-scrips/bootstrap.sh</code> and add <code>cert /vagrant/mycert.crt</code> to the pip commands.</p>
 
 
-    <h3>Github</h3>
+    <h4>Github</h4>
     <p>If git complains about certificates, open <code>bootstrap-scrips/bootstrap.sh</code> and uncomment the following line; <code>git config --global http.sslverify false</code></p>
 
 
     <h2>Other possible issues</h2>
 
-    <h3>VirtualBox DHCP error</h3>
+    <h4>VirtualBox DHCP error</h4>
 
     <p>If you see the following error:
     <pre><code>A host only network interface you're attempting to configure via DHCP
