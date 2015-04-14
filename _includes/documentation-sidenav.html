@@ -2,14 +2,22 @@
 <ul class="nav nav-sidebar">
   <li{% if page.side_nav == "quickstart-osx" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/quickstart-osx.html">Quick Start - OSX</a></li>
+  
   <li{% if page.side_nav == "quickstart-linux" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/quickstart-linux.html">Quick Start - Linux</a></li>
+
+  <li{% if page.side_nav == "vagrant" %} class="active"{% endif %}>
+    <a href="{{ page.base_url }}documentation/vagrant.html">Vagrant</a></li>
+  
   <li{% if page.side_nav == "ldap-configuration" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/ldap-configuration.html">LDAP/AD Configuration</a></li>
+  
   <li{% if page.side_nav == "building-the-client" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/building-the-client.html">Building The Client</a></li>
+  
   <li{% if page.side_nav == "ustom-patch-content" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/custom-patch-content.html">Custom Patch Content</a></li>
+  
   <li{% if page.side_nav == "install-distribution-server" %} class="active"{% endif %}>
     <a href="{{ page.base_url }}documentation/install-distribution-server.html">Install Distribution Server</a></li>
 </ul>
