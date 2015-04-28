@@ -37,11 +37,11 @@ rm /tmp/trusty-server-cloudimg-amd64-vagrant-disk1.box
     </pre></code>
 
     <h4>PIP</h4>
-    <p>You may see certificate errors from pip commands in the bootstrap.sh provisioning script. To workaround this, copy your site's certificate into the project directory. Then modify the file <code>bootstrap-scrips/bootstrap.sh</code> and add <code>--cert /vagrant/mycert.crt</code> to the pip commands.</p>
+    <p>You may see certificate errors from pip commands in the bootstrap.sh provisioning script. To workaround this, copy your site's certificate into the project directory. Then modify the file <code>bootstrap-scripts/bootstrap.sh</code> and add <code>--cert /vagrant/mycert.crt</code> to the pip commands.</p>
 
 
     <h4>Github</h4>
-    <p>If git complains about certificates, open <code>bootstrap-scrips/bootstrap.sh</code> and uncomment the following line; <code>git config --global http.sslverify false</code></p>
+    <p>If git complains about certificates, open <code>bootstrap-scripts/bootstrap.sh</code> and uncomment the following line; <code>git config --global http.sslverify false</code></p>
 
 
     <h2>Other possible issues</h2>
