@@ -1,1 +1,0 @@
-/Users/escobar6/Documents/_Dev/macpatch.github.io.git/_posts/2015-06-04-ldapad-authentication.md
