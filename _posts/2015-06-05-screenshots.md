@@ -20,4 +20,4 @@ mediadir: screenshots
 ![Web Admin console]({{ site.url }}{{ site.baseurl }}{{ site.mediabase }}/{{ page.mediadir }}/webadmin.png "Web Admin console")
 
 ## Environment diagram
-![Web Admin console]({{ site.url }}{{ site.baseurl }}{{ site.mediabase }}/{{ page.mediadir }}/env-diagram.png "Environment diagram")
+![Web Admin console]({{ site.url }}{{ site.baseurl }}{{ site.mediabase }}/{{ page.mediadir }}/diagram.png "Environment diagram")
