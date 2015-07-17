@@ -54,7 +54,3 @@ redcarpet:
         'tables',
         'hardwrap'
     ]
-
-# Turn on recognition of Github Flavored Markdown
-kramdown:
-    imput: GFM
