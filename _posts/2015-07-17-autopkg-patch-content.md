@@ -10,10 +10,10 @@ mediadir: autopkg-patch-content
 
 The MacPatchImporter for AutoPkg processor adds the ability to upload AutoPkg packages to a MacPatch server.
 
-#### MacPatchImporterProcessor
+## MacPatchImporterProcessor
 The MacPatchImporterProcessor recipe is an AutoPkg ["shared recipe processor"](https://github.com/autopkg/autopkg/wiki/Processor-Locations#shared-recipe-processors). It's a "stub" recipe that makes the MacPatchImporter processor available to your other recipes. The other ".macpatch" recipes in this repo use that stub to access the "MacPatchImporterProcessor.py" processor.
 
-#### Setup
+## Setup
 
 You must have [AutoPkg](https://github.com/autopkg/autopkg/releases/latest) installed and the main recipe repo added.
 
@@ -21,12 +21,12 @@ You must have [AutoPkg](https://github.com/autopkg/autopkg/releases/latest) inst
 
 You can find more information on AutoPkg [here](http://autopkg.github.io/autopkg/)
 
-###### Add the MacPatch repo
+### Add the MacPatch repo
 
     autopkg repo-add https://github.com/SMSG-MAC-DEV/MacPatch-AutoPKG.git
 
 
-###### Configure MacPatch environment settings
+### Configure MacPatch environment settings
 Some settings can be set for all .macpatch recipes in the AutoPkg preferences.
 
     defaults write com.github.autopkg MP_URL https://macpatch.company.com
@@ -37,16 +37,16 @@ Environments using self signed certificates should set the following key.
 
     defaults write com.github.autopkg MP_SSL_VERIFY -bool NO
 
-###### Create override for a recipe
+### Create override for a recipe
 It's best to use [overrides](https://github.com/autopkg/autopkg/wiki/Recipe-Overrides) to set the recipe specific inputs for your environment. 
 
     autopkg make-override Firefox.macpatch
 
 Only keep the keys that you alter. Remove any unchanged keys from the override file.
 
-#### Input keys
+## Input keys
 
-**patch_name**
+### patch_name
 * Patch name for use in MacPatch.
 
 *Example:*
@@ -56,7 +56,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 <string>Firefox</string>
 ```
 
-**patch_id**
+### patch_id
 * MacPatch bundle ID.
 
 *Example:*
@@ -66,7 +66,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 <string>org.mozilla.firefox</string>
 ```
 
-**description**
+### description
 * A description for the patch in MacPatch.
 
 *Example:*
@@ -77,7 +77,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**description_url**
+### description_url
 * A url to find more info on the patch.
 
 *Example:*
@@ -88,7 +88,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_vendor**
+### patch_vendor
 * The name of the patch vendor.
 
 *Example:*
@@ -99,7 +99,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_severity**
+### patch_severity
 * Severity of the patch.
 * Valid values:
   * High
@@ -115,7 +115,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**OSType**
+### OSType
 * Which OS types is the patch valid for. Having the Server.app installed makes it a Sever.
 * Valid values:
   * "Mac OS X, Mac OS X Server"
@@ -130,7 +130,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**OSVersion**
+### OSVersion
 * Comma separated list of OS versions to apply the patch to.
 * Possible values:
   * "10.10.\*" 
@@ -145,7 +145,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_criteria**
+### patch_criteria
 * An array of patch criteria.
 <br>See MacPatch [docs](https://macpatch.github.io/documentation/custom-patch-content.html#patch_criteria_lang) for more info.
 
@@ -160,7 +160,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_criteria_scripts**
+### patch_criteria_scripts
 * True/False key to indicate if patch criteria scripts are used.
 <br>Scripts are not included directly in the recipe xml. Instead they are placed into a "scripts" sub-folder of the recipe and the corresponding key in the recipe is set to true.
 <br>If this key is set to true, the processor will look for any files with a `.criteria-script` file extension in the `./scripts` folder. 
@@ -174,7 +174,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**pkg_preinstall**
+### pkg_preinstall
 * True/False key to indicate if a patch pre-install script is used.
 <br>Scripts are not included directly in the recipe xml. Instead they are placed into a "scripts" sub-folder of the recipe and the corresponding key in the recipe is set to true.
 <br>If this key is set to true, the processor will look a file named `preinstall.script` in the `./scripts` folder. 
@@ -187,7 +187,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**pkg_postinstall**
+### pkg_postinstall
 * True/False key to indicate if a patch post-install script is used.
 <br>Scripts are not included directly in the recipe xml. Instead they are placed into a "scripts" sub-folder of the recipe and the corresponding key in the recipe is set to true.
 <br>If this key is set to true, the processor will look a file named `postinstall.script` in the `./scripts` folder. 
@@ -200,7 +200,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**pkg_env_var**
+### pkg_env_var
 * Environment variables to set before patch executes.
 
 *Example:*
@@ -211,7 +211,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_install_weight**
+### patch_install_weight
 * A number between 1 to 100. Patches are ordered for install by this number. Default is 30. Change this value to control the order it will install.
 
 *Example:*
@@ -222,7 +222,7 @@ Only keep the keys that you alter. Remove any unchanged keys from the override f
 ```
 
 
-**patch_reboot**
+### patch_reboot
 * Set if patch requires a reboot. Notice this key is not True/False, instead its Yes/No
 
 *Example:*
