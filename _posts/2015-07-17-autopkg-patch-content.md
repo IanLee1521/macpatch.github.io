@@ -1,10 +1,10 @@
 ---
 layout: doc-page
-title: "MacPatch and AutoPkg"
+title: "AutoPkg patch content"
 category: doc
-date: 2015-07-17 08:43:12
+date: 2015-07-17 08:53:10
 order: 9999
-mediadir: macpatch-and-autopkg
+mediadir: autopkg-patch-content
 ---
 
 
