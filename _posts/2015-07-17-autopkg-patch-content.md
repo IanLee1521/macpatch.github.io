@@ -17,38 +17,3 @@ The MacPatchImporterProcessor recipe is an AutoPkg ["shared recipe processor"](h
 
 You must have [AutoPkg](https://github.com/autopkg/autopkg/releases/latest) installed and the main recipe repo added.
 
-```shell
-autopkg repo-add http://github.com/autopkg/recipes.git
-```
-
-You can find more information on AutoPkg [here](http://autopkg.github.io/autopkg/)
-
-###### Add the MacPatch repo
-
-```shell
-autopkg repo-add https://github.com/SMSG-MAC-DEV/MacPatch-AutoPKG.git
-```
-
-###### Configure MacPatch environment settings
-Some settings can be set for all .macpatch recipes in the AutoPkg preferences.
-
-```shell
-defaults write com.github.autopkg MP_URL https://macpatch.company.com
-defaults write com.github.autopkg MP_USER autopkg
-defaults write com.github.autopkg MP_PASSWORD password
-```
-
-Environments using self signed certificates should set the following key.
-
-```shell
-defaults write com.github.autopkg MP_SSL_VERIFY -bool NO
-```
-
-###### Create override for a recipe
-It's best to use [overrides](https://github.com/autopkg/autopkg/wiki/Recipe-Overrides) to set the recipe specific inputs for your environment. 
-
-```shell
-autopkg make-override Firefox.macpatch
-```
-
-Only keep the keys that you alter. Remove any unchanged keys from the override file.
