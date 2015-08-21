@@ -7,14 +7,33 @@ order: 1
 ---
 
 
-This is a quick start guide to getting MacPatch installed and running on a Linux based system running Ubuntu or Fedora.
+This is a quick start guide to getting MacPatch installed and running on a Linux based system running Ubuntu or Fedora (RedHat).
 
-Please note, this has been tested on Ubuntu 12.10, Fedora 20. While RHEL and CentOS may work they have not been tested at this time.
+Please note, this has been tested on Ubuntu 12.10, Fedora 20, Fedora 21. RHEL 7 is supported but previouse versions are not. 
 
+## Table of Contents
+* [Required Software](#a1)
+	* [Ubuntu](#a1a)
+	* [Fedora / RHEL](#a1b)
+	* [Python](#a1c)
+* [Download and Build](#a2) 
+* [MySQL Database](#a3)
+* [Server Setup](#a4)
+* [Console Configuration ](#a5)
+
+
+<a name='a1'></a>
 ## Required Software
-There are two prerequisites to installing the MacPatch server software on Linux. Please install the following packages based on your Linux distro.
+There are a couple of prerequisites to installing the MacPatch server software on Linux. The following packages and Python modules need to be installed. Your welcome to install them before hand or the MPBuildServer.sh script will install the nessasary packages.
 
-### Ubuntu
+<a name='a1a'></a>
+### Ubuntu 
+
+##### Packages
+	git, build-essential, openjdk-7-jdk or openjdk-8-jdk, zip, libssl-dev, libxml2-dev
+	python-pip, mysql-connector-python
+
+<!--
 #### APT
 
 	sudo apt-get update
@@ -26,8 +45,16 @@ There are two prerequisites to installing the MacPatch server software on Linux.
 	sudo apt-get install libxml2-dev
 	sudo apt-get install python-pip
 	sudo apt-get install python-mysql.connector 
-    
-### Fedora
+-->
+
+<a name='a1b'></a>
+### Fedora / RedHat Enterprise Linux 
+
+##### Packages
+	gcc-c++, git, openssl-devel, java-1.7.0-openjdk-devel or java-1.8.0-openjdk-devel,
+	libxml2-devel, bzip2, bzip2-libs, bzip2-devel, python-pip, mysql-connector-python
+
+<!--
 #### YUM
 
 	sudo yum install gcc-c++
@@ -40,14 +67,15 @@ There are two prerequisites to installing the MacPatch server software on Linux.
 	sudo yum install bzip2-devel
 	sudo yum install python-pip
 	sudo yum install mysql-connector-python
-    
-#### PIP (Python Modules)
+-->
+<a name='a1c'></a>
+#### PIP (Python Modules) 
 
-	sudo pip install requests
-	sudo pip install python-crontab
-	sudo pip install argparse
-    
-## Download and build the Server software
+	pip, argparse, mysql-connector-python, requests, biplist, wheel, python-crontab
+
+
+<a name='a2'></a>    
+## Download and build the Server software 
 To download and build the MacPatch server software is just a few Terminal commands. Run the following commands to build and install the software.
 
 Please note, you will be asked if you want to use the Jetty J2EE server. With MacPatch 2.5 Tomcat is now the default J2EE server. The Jetty distribution is old and may have security vulnerabilities. It is scheduled to be removed in the next release.
@@ -61,12 +89,16 @@ Note: if you get a Error message `error: server certificate verification failed.
 
 Once the compile and copy process is completed, the MacPatch server software is now installed and ready to be configured.
 
-## MySQL Database
+<a name='a3'></a>
+## MySQL Database 
 MacPatch requires the use of MySQL database. The database can be installed on the first server built or it can be installed on a separate host. MySQL version 5.5.x or higher is required. MySQL 5.6.x is recommended due to it's performance enhancements. Also, the MySQL InnoDB engine is required.
 
 ### Configure MySQL Database
-Run the following commands via the Terminal.app.
+Run the following script via the Terminal.app. Please note, you will need to know the MySQL root user password.
+	
+	% /Library/MacPatch/Server/conf/scripts/MPDBSetup.sh
 
+<!--
 #### Log in as the MySQL root user
 
 	mysql -u root -p
@@ -94,8 +126,11 @@ The database schema files are located on the MacPatch server in the `/Library/Ma
 
 	% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_Tables.sql
 	% mysql MacPatchDB -u mpdbadm -p < /Library/MacPatch/Server/conf/Database/MacPatchDB_Views.sql
-        
-## Setup MacPatch Server
+	
+-->
+
+<a name='a4'></a>        
+## Setup MacPatch Server 
 The MacPatch server has five configuration script and should be run in the given order. The scripts are located on the server in `/Library/MacPatch/Server/conf/scripts/Setup/`.
 
 Script	| Description | Server/Is Required
@@ -121,7 +156,8 @@ If you have elected to deploy Symantec AntiVirus definitions via MacPatch then i
 
 	sudo -u www-data /Library/MacPatch/Server/conf/scripts/MPAVDefsSync.py --plist /Library/MacPatch/Server/conf/etc/gov.llnl.mpavdl.plist
         
-## Configure MacPatch - Admin Console
+<a name='a5'></a>        
+## Configure MacPatch - Admin Console 
 Now that the MacPatch server is up and running, you will need to configure the environment.
 
 ### First Login
