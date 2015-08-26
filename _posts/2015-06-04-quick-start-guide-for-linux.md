@@ -35,7 +35,7 @@ There are a couple of prerequisites to installing the MacPatch server software o
 	python-pip, mysql-connector-python
 
 <!--
-#### APT
+#### APThelpnetsecurity: Using tVolution Mini, a portable secure desktop - http://t.co/J4pwn9pAs0 #hardware
 
 	sudo apt-get update
 	sudo apt-get install git
