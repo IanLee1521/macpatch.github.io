@@ -178,6 +178,7 @@ Example data for Master server:
 * Port: 2600
 * Use SSL: Yes
 * Use SSL Auth: NO (Not Supported Yet)
+* Allow Self-Signed Cert: Yes
 * Is Master: Yes
 * Is Proxy: No
 * Active: Yes
