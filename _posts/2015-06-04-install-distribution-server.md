@@ -20,7 +20,7 @@ order: 9999
 * [Console Configuration ](#a4)
 * [Sync/Download Content](#a5)
 
-
+# &nbsp;
 <a name='a1'></a>
 ## Required Software
 
@@ -53,6 +53,7 @@ All python modules will be installed during the build script.
 
 	argparse, mysql-connector-python, requests, biplist, wheel, python-crontab
 
+# &nbsp; 
 <a name='a2'></a>		
 ## Install Server Software
 
