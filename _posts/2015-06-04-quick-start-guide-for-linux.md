@@ -7,7 +7,7 @@ order: 1
 ---
 
 
-This is a quick start guide to getting MacPatch installed and running on a Linux based system running Ubuntu or Fedora (RedHat).
+This is a quick start guide to getting MacPatch version 2.8.x installed and running on a Linux based system running Ubuntu or Fedora (RedHat).
 
 Please note, this has been tested on Ubuntu 12.10, Fedora 20, Fedora 21. RHEL 7 is supported but previouse versions are not. 
 
@@ -27,50 +27,23 @@ Please note, this has been tested on Ubuntu 12.10, Fedora 20, Fedora 21. RHEL 7 
 ## Required Software
 There are a couple of prerequisites to installing the MacPatch server software on Linux. The following packages and Python modules need to be installed. Your welcome to install them before hand or the MPBuildServer.sh script will install the nessasary packages.
 
+**Please Note: JAVA 1.8 is required, please check your version of Linux to make sure you can install it before continuing.**
+
 <a name='a1a'></a>
 ### Ubuntu 
 
 ##### Packages
-	git, build-essential, openjdk-7-jdk or openjdk-8-jdk, zip, libssl-dev, libxml2-dev
-	python-pip, mysql-connector-python
-
-<!--
-#### APThelpnetsecurity: Using tVolution Mini, a portable secure desktop - http://t.co/J4pwn9pAs0 #hardware
-
-	sudo apt-get update
-	sudo apt-get install git
-	sudo apt-get install build-essential
-	sudo apt-get install openjdk-7-jdk
-	sudo apt-get install zip
-	sudo apt-get install libssl-dev
-	sudo apt-get install libxml2-dev
-	sudo apt-get install python-pip
-	sudo apt-get install python-mysql.connector 
--->
+	git, build-essential, openjdk-8-jdk, python-pip, mysql-connector-python
 
 <a name='a1b'></a>
 ### Fedora / RedHat Enterprise Linux 
 
 ##### Packages
-	gcc-c++, git, openssl-devel, java-1.7.0-openjdk-devel or java-1.8.0-openjdk-devel,
-	libxml2-devel, bzip2, bzip2-libs, bzip2-devel, python-pip, mysql-connector-python
+	gcc-c++, git, java-1.8.0-openjdk-devel, python-pip, mysql-connector-python
 
-<!--
-#### YUM
-
-	sudo yum install gcc-c++
-	sudo yum install git
-	sudo yum install openssl-devel
-	sudo yum install java-1.7.0-openjdk-devel
-	sudo yum install libxml2-devel
-	sudo yum install bzip2
-	sudo yum install bzip2-libs
-	sudo yum install bzip2-devel
-	sudo yum install python-pip
-	sudo yum install mysql-connector-python
--->
 <a name='a1c'></a>
 #### PIP (Python Modules) 
+All python modules will be installed during the build script.
 
 	pip, argparse, mysql-connector-python, requests, biplist, wheel, python-crontab
 
@@ -78,8 +51,6 @@ There are a couple of prerequisites to installing the MacPatch server software o
 <a name='a2'></a>    
 ## Download and build the Server software 
 To download and build the MacPatch server software is just a few Terminal commands. Run the following commands to build and install the software.
-
-Please note, you will be asked if you want to use the Jetty J2EE server. With MacPatch 2.5 Tomcat is now the default J2EE server. The Jetty distribution is old and may have security vulnerabilities. It is scheduled to be removed in the next release.
 
 	sudo mkdir -p /Library/MacPatch/tmp
 	cd /Library/MacPatch/tmp
@@ -95,7 +66,7 @@ Once the compile and copy process is completed, the MacPatch server software is 
 MacPatch requires the use of MySQL database. The database can be installed on the first server built or it can be installed on a separate host. MySQL version 5.5.x or higher is required. MySQL 5.6.x is recommended due to it's performance enhancements. Also, the MySQL InnoDB engine is required.
 
 #### Setup MacPatch MySQL Database
-Run the following script via the Terminal.app. Please note, you will need to know the MySQL root user password.
+Run the following script via the Terminal.app. You will need to know the MySQL root user password.
 	
 	% /Library/MacPatch/Server/conf/scripts/MPDBSetup.sh
 
