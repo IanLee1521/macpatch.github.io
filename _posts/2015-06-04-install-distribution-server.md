@@ -7,6 +7,7 @@ order: 9999
 ---
 
 ## Table of Contents
+--
 * [Required Software](#a1)
 	* [Mac OS X] (#a1a)	
 	* [Ubuntu](#a1b)
@@ -21,7 +22,7 @@ order: 9999
 
 <a name='a1'></a>
 ## Required Software
-
+--
 
 <a name='a1a'></a>
 ### Mac OS X Requirements
@@ -54,6 +55,7 @@ All python modules will be installed during the build script.
 
 <a name='a2'></a>		
 ## Install Server Software
+--
 
 When building and the Master server from source the build script will ask if you want to create an archive of the install. If you choose "Y" (yes), the script create an archive called `MacPatch_Server.zip` in `/Library/MacPatch`. This zip file is a complete copy of the master server build in a unconfigured state.
 
@@ -78,6 +80,7 @@ Installing from archive will require the install of the required packages for th
 
 <a name='a3'></a>
 ## Setup Distribution Server 
+--
 The MacPatch Distribution server has a couple of configuration scripts, and they should be run in the given order. The scripts are located on the server in `/Library/MacPatch/Server/conf/scripts/Setup/`.
 
 Script	| Description | Server | Required
@@ -93,6 +96,7 @@ StartServices.py | This script will add nessasary startup scripts and start and 
 
 <a name='a4'></a>
 ## Add Server via Admin Console
+--
 The new distribution server will need to be added to the list of servers for your MacPatch environment.
 
 * Go to "Admin-> Server -> MacPatch Servers"
@@ -111,6 +115,7 @@ Example data for Master server:
 
 <a name='a5'></a>
 ## Sync Content from Master
+--
 To syncronize all of the MacPatch content on to the distribution server you will first need to add the IP Address or hostname to the MacPatch rsyncd.conf (/Library/MacPatch/Server/conf/etc/rsyncd.conf) file located on the **Master** server. 
 
 Add the IP Address or hostname to each section in the "hosts allow" attribute. The list of servers is comma delimited.
