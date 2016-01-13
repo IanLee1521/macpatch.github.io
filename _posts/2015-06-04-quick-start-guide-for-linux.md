@@ -45,7 +45,7 @@ There are a couple of prerequisites to installing the MacPatch server software o
 #### PIP (Python Modules) 
 All python modules will be installed during the build script.
 
-	pip, argparse, mysql-connector-python, requests, biplist, wheel, python-crontab
+	argparse, mysql-connector-python, requests, biplist, wheel, python-crontab
 
 
 <a name='a2'></a>    
@@ -72,7 +72,7 @@ Run the following script via the Terminal.app. You will need to know the MySQL r
 
 <a name='a4'></a>        
 ## Setup MacPatch Server 
-The MacPatch server has five configuration script and should be run in the given order. The scripts are located on the server in `/Library/MacPatch/Server/conf/scripts/Setup/`.
+The MacPatch server has a couple of configuration scripts, and they should be run in the given order. The scripts are located on the server in `/Library/MacPatch/Server/conf/scripts/Setup/`.
 
 Script	| Description | Server | Required
 ---|---|---|---
