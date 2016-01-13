@@ -7,6 +7,7 @@ order: 9999
 ---
 
 ## Table of Contents
+
 * [Required Software](#a1)
 	* [Mac OS X] (#a1a)	
 	* [Ubuntu](#a1b)
