@@ -20,7 +20,8 @@ order: 9999
 * [Console Configuration ](#a4)
 * [Sync/Download Content](#a5)
 
-# &nbsp;
+<br>
+<hr>
 <a name='a1'></a>
 ## Required Software
 
