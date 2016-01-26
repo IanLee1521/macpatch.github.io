@@ -33,13 +33,13 @@ There are a couple of prerequisites to installing the MacPatch server software o
 ### Ubuntu 
 
 ##### Packages
-	git, build-essential, openjdk-8-jdk, python-pip, mysql-connector-python
+	build-essential, git, openjdk-8-jdk, python-pip
 
 <a name='a1b'></a>
 ### Fedora / RedHat Enterprise Linux 
 
 ##### Packages
-	gcc-c++, git, java-1.8.0-openjdk-devel, python-pip, mysql-connector-python
+	gcc-c++, git, java-1.8.0-openjdk-devel, python-pip
 
 <a name='a1c'></a>
 #### PIP (Python Modules) 
